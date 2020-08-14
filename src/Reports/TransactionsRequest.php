@@ -66,6 +66,12 @@ class TransactionsRequest extends AbstractRequest
         return $this;
     }
 
+    public function whereCustomerId(string $customerId): TransactionsRequest
+    {
+        $this->setParam(RequestParams::TRANSACTION_CUSTOMER_ID, $customerId);
+        return $this;
+    }
+
     public function handleResponse(string $data): array
     {
         if ($this->getReturnFormat() === TransactionsRequest::RETURN_FORMAT_XML) {
@@ -73,7 +79,7 @@ class TransactionsRequest extends AbstractRequest
 
             return array_map(function ($row) {
                 $dateNormalizer = function ($value) {
-                    $dateFormat = 'Y/m/d H:i:s';
+                    $dateFormat = 'Y-m-d H:i:s';
                     $value = date_create_immutable_from_format($dateFormat, $value, new \DateTimeZone($this->getTimeZone()));
                     return $value ? $value : null;
                 };

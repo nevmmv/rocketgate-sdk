@@ -52,7 +52,7 @@ class MembershipsRequest extends AbstractRequest
 
     public function whereCustomerId(string $customerId): MembershipsRequest
     {
-        $this->setParam(RequestParams::CUSTOMER_ID, $customerId);
+        $this->setParam(RequestParams::MEMBERSHIP_CUSTOMER_ID, $customerId);
         return $this;
     }
 
@@ -63,7 +63,7 @@ class MembershipsRequest extends AbstractRequest
 
             return array_map(function ($row) {
                 $dateNormalizer = function ($value) {
-                    $dateFormat = 'Y/m/d H:i:s';
+                    $dateFormat = 'Y-m-d H:i:s';
                     $value = date_create_immutable_from_format($dateFormat, $value, new \DateTimeZone('UTC'));
                     return $value ? $value : null;
                 };
@@ -72,6 +72,8 @@ class MembershipsRequest extends AbstractRequest
                 $row['rebill_date'] = $dateNormalizer($row['rebill_date']);
                 $row['rebill_cancel_request_date'] = $dateNormalizer($row['rebill_cancel_request_date']);
                 $row['rebill_last_updated_date'] = $dateNormalizer($row['rebill_last_updated_date']);
+
+                $row['pay_num_l4'] = (int)($row['pay_num_l4']);
                 foreach ($row as $k => $v) {
                     if (is_array($row[$k]) && count($row[$k]) === 0) {
                         $row[$k] = null;
@@ -100,6 +102,7 @@ class MembershipsRequest extends AbstractRequest
                     $row['rebill_date'] = $dateNormalizer($row['rebill_date']);
                     $row['rebill_cancel_request_date'] = $dateNormalizer($row['rebill_cancel_request_date']);
                     $row['rebill_last_updated_date'] = $dateNormalizer($row['rebill_last_updated_date']);
+                    $row['pay_num_l4'] = (int)($row['pay_num_l4']);
 
                     return $row;
                 }, $json['DATA']);
