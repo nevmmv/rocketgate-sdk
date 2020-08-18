@@ -63,8 +63,8 @@ class MembershipsRequest extends AbstractRequest
 
             return array_map(function ($row) {
                 $dateNormalizer = function ($value) {
-                    $dateFormat = 'Y-m-d H:i:s';
-                    $value = date_create_immutable_from_format($dateFormat, $value, new \DateTimeZone('UTC'));
+                    $dateFormat = 'Y-m-d H:i:s.u';
+                    $value = date_create_immutable_from_format($dateFormat, $value.'.0', new \DateTimeZone('UTC'));
                     return $value ? $value : null;
                 };
                 $row['rebill_start_date'] = $dateNormalizer($row['rebill_start_date']);
@@ -74,6 +74,7 @@ class MembershipsRequest extends AbstractRequest
                 $row['rebill_last_updated_date'] = $dateNormalizer($row['rebill_last_updated_date']);
 
                 $row['pay_num_l4'] = (int)($row['pay_num_l4']);
+                $row['sticky_mid'] = (int)($row['sticky_mid']);
                 foreach ($row as $k => $v) {
                     if (is_array($row[$k]) && count($row[$k]) === 0) {
                         $row[$k] = null;
@@ -92,8 +93,10 @@ class MembershipsRequest extends AbstractRequest
                     $row = array_combine($keys, $values);
 
                     $dateNormalizer = function ($value) {
-                        $dateFormat = 'F, d Y H:i:s';
-                        $value = date_create_immutable_from_format($dateFormat, $value, new \DateTimeZone('UTC'));
+                        $dateFormat = 'F, d Y H:i:s.u';
+                        $value = date_create_immutable_from_format($dateFormat, $value.'.0', new \DateTimeZone('UTC'));
+
+
                         return $value ? $value : null;
                     };
 
@@ -103,6 +106,7 @@ class MembershipsRequest extends AbstractRequest
                     $row['rebill_cancel_request_date'] = $dateNormalizer($row['rebill_cancel_request_date']);
                     $row['rebill_last_updated_date'] = $dateNormalizer($row['rebill_last_updated_date']);
                     $row['pay_num_l4'] = (int)($row['pay_num_l4']);
+                    $row['sticky_mid'] = (int)($row['sticky_mid']);
 
                     return $row;
                 }, $json['DATA']);
