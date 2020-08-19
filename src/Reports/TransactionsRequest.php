@@ -97,6 +97,7 @@ class TransactionsRequest extends AbstractRequest
                 $row['expireyear'] = (int)($row['expireyear']);
                 $row['respc_id'] = (int)($row['respc_id']);
                 $row['resp_id'] = (int)($row['resp_id']);
+                $row['merchant_account'] = (int)($row['merchant_account']);
                 $row['merch_id_referrer'] = isset($row['merch_id_referrer']) ? (int)($row['merch_id_referrer']) : null;
 
                 return $row;
@@ -125,6 +126,7 @@ class TransactionsRequest extends AbstractRequest
                     $row['expireyear'] = (int)($row['expireyear']);
                     $row['merch_id'] = (int)($row['merch_id']);
                     $row['respc_id'] = (int)($row['respc_id']);
+                    $row['merchant_account'] = (int)($row['merchant_account']);
                     $row['resp_id'] = (int)($row['resp_id']);
                     $row['merch_id_referrer'] = isset($row['merch_id_referrer']) ? (int)($row['merch_id_referrer']) : null;
 

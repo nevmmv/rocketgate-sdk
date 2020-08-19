@@ -61,7 +61,6 @@ class ChargebacksRequest extends AbstractRequest
                 $row['chargeback_diff'] = (int)($row['chargeback_diff']);
                 $row['merchant_site_id'] = (int)($row['merchant_site_id']);
                 $row['merch_id'] = (int)($row['merch_id']);
-                $row['merchant_account'] = (int)($row['merchant_account']);
                 $row['refund_diff'] = (int)($row['refund_diff']);
 
                 $row['chargebackamount'] = (float)($row['chargebackamount']);
@@ -103,7 +102,6 @@ class ChargebacksRequest extends AbstractRequest
                     $row['chargeback_diff'] = (int)($row['chargeback_diff']);
                     $row['merchant_site_id'] = (int)($row['merchant_site_id']);
                     $row['merch_id'] = (int)($row['merch_id']);
-                    $row['merchant_account'] = (int)($row['merchant_account']);
                     $row['refund_diff'] = (int)($row['refund_diff']);
 
                     $row['chargebackamount'] = (float)($row['chargebackamount']);
