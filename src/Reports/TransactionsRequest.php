@@ -91,14 +91,12 @@ class TransactionsRequest extends AbstractRequest
                         $row[$k] = null;
                     }
                 }
-                $row['bankbin'] = (int)($row['bankbin']);
                 $row['site_id'] = (int)($row['site_id']);
                 $row['merch_id'] = (int)($row['merch_id']);
                 $row['expiremonth'] = (int)($row['expiremonth']);
                 $row['expireyear'] = (int)($row['expireyear']);
                 $row['respc_id'] = (int)($row['respc_id']);
                 $row['resp_id'] = (int)($row['resp_id']);
-                $row['tr_pay_num_l4'] = (int)($row['tr_pay_num_l4']);
                 $row['merch_id_referrer'] = isset($row['merch_id_referrer']) ? (int)($row['merch_id_referrer']) : null;
 
                 return $row;
@@ -121,7 +119,6 @@ class TransactionsRequest extends AbstractRequest
                     $row['tr_date'] = $dateNormalizer($row['tr_date']);
                     $row['tr_chargebackdate'] = $dateNormalizer($row['tr_chargebackdate']);
                     $row['bat_date'] = $dateNormalizer($row['bat_date']);
-                    $row['bankbin'] = (int)($row['bankbin']);
                     $row['site_id'] = (int)($row['site_id']);
                     $row['merch_id'] = (int)($row['merch_id']);
                     $row['expiremonth'] = (int)($row['expiremonth']);
@@ -129,7 +126,6 @@ class TransactionsRequest extends AbstractRequest
                     $row['merch_id'] = (int)($row['merch_id']);
                     $row['respc_id'] = (int)($row['respc_id']);
                     $row['resp_id'] = (int)($row['resp_id']);
-                    $row['tr_pay_num_l4'] = (int)($row['tr_pay_num_l4']);
                     $row['merch_id_referrer'] = isset($row['merch_id_referrer']) ? (int)($row['merch_id_referrer']) : null;
 
                     return $row;

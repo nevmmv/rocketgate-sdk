@@ -73,7 +73,6 @@ class MembershipsRequest extends AbstractRequest
                 $row['rebill_cancel_request_date'] = $dateNormalizer($row['rebill_cancel_request_date']);
                 $row['rebill_last_updated_date'] = $dateNormalizer($row['rebill_last_updated_date']);
 
-                $row['pay_num_l4'] = (int)($row['pay_num_l4']);
                 $row['sticky_mid'] = (int)($row['sticky_mid']);
                 foreach ($row as $k => $v) {
                     if (is_array($row[$k]) && count($row[$k]) === 0) {
@@ -105,7 +104,6 @@ class MembershipsRequest extends AbstractRequest
                     $row['rebill_date'] = $dateNormalizer($row['rebill_date']);
                     $row['rebill_cancel_request_date'] = $dateNormalizer($row['rebill_cancel_request_date']);
                     $row['rebill_last_updated_date'] = $dateNormalizer($row['rebill_last_updated_date']);
-                    $row['pay_num_l4'] = (int)($row['pay_num_l4']);
                     $row['sticky_mid'] = (int)($row['sticky_mid']);
 
                     return $row;
