@@ -96,7 +96,7 @@ class ChargebacksRequest extends AbstractRequest
                     $row['dispute_date'] = $dateNormalizer($row['dispute_date']);
                     $row['refund_date'] = $dateNormalizer($row['refund_date']);
                     $row['transactiondate'] = $dateNormalizer($row['transactiondate']);
-                    $row['tr_chargebackdate'] = $dateNormalizer(!isset($row['tr_chargebackdate']) ? null : $row['tr_chargebackdate'] . ' 00:00:00.0');
+                    $row['tr_chargebackdate'] = $dateNormalizer(!isset($row['tr_chargebackdate']) ? null : $row['tr_chargebackdate']);
 
 
                     $row['chargeback_diff'] = (int)($row['chargeback_diff']);
