@@ -64,7 +64,7 @@ class MembershipsRequest extends AbstractRequest
             return array_map(function ($row) {
                 $dateNormalizer = function ($value) {
                     $dateFormat = 'Y-m-d H:i:s.u';
-                    $value = date_create_immutable_from_format($dateFormat, $value.'.0', new \DateTimeZone('UTC'));
+                    $value = date_create_immutable_from_format($dateFormat, $value, new \DateTimeZone('UTC'));
                     return $value ? $value : null;
                 };
                 $row['rebill_start_date'] = $dateNormalizer($row['rebill_start_date']);
@@ -89,11 +89,11 @@ class MembershipsRequest extends AbstractRequest
                 $json = json_decode(substr($data, 2), true);
                 $keys = array_map('strtolower', $json['COLUMNS']);
                 return array_map(function ($values) use ($keys) {
-                    $row = array_combine($keys, $values);
+                    $row = array_combine($keys, array_map('trim', $values));
 
                     $dateNormalizer = function ($value) {
                         $dateFormat = 'F, d Y H:i:s.u';
-                        $value = date_create_immutable_from_format($dateFormat, $value.'.0', new \DateTimeZone('UTC'));
+                        $value = date_create_immutable_from_format($dateFormat, $value . '.0', new \DateTimeZone('UTC'));
 
 
                         return $value ? $value : null;

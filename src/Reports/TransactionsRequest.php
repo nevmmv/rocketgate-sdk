@@ -108,7 +108,7 @@ class TransactionsRequest extends AbstractRequest
                 $json = json_decode(substr($data, 2), true);
                 $keys = array_map('strtolower', $json['COLUMNS']);
                 return array_map(function ($values) use ($keys) {
-                    $row = array_combine($keys, $values);
+                    $row = array_combine($keys, array_map('trim', $values));
 
                     $dateNormalizer = function ($value) {
                         $dateFormat = 'F, d Y H:i:s';
