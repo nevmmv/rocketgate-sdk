@@ -73,6 +73,11 @@ class MembershipsRequest extends AbstractRequest
                 $row['rebill_cancel_request_date'] = $dateNormalizer($row['rebill_cancel_request_date']);
                 $row['rebill_last_updated_date'] = $dateNormalizer($row['rebill_last_updated_date']);
 
+                $row['rebill_amount'] = (float)($row['rebill_amount']);
+                $row['initial_amount'] = (float)($row['initial_amount']);
+                $row['merchant_id'] = (int)($row['merchant_id']);
+                $row['merchant_site_id'] = (int)($row['merchant_site_id']);
+
                 $row['sticky_mid'] = (int)($row['sticky_mid']);
                 foreach ($row as $k => $v) {
                     if (is_array($row[$k]) && count($row[$k]) === 0) {
@@ -104,6 +109,12 @@ class MembershipsRequest extends AbstractRequest
                     $row['rebill_date'] = $dateNormalizer($row['rebill_date']);
                     $row['rebill_cancel_request_date'] = $dateNormalizer($row['rebill_cancel_request_date']);
                     $row['rebill_last_updated_date'] = $dateNormalizer($row['rebill_last_updated_date']);
+
+                    $row['rebill_amount'] = (float)($row['rebill_amount']);
+                    $row['initial_amount'] = (float)($row['initial_amount']);
+                    $row['merchant_id'] = (int)($row['merchant_id']);
+                    $row['merchant_site_id'] = (int)($row['merchant_site_id']);
+
                     $row['sticky_mid'] = (int)($row['sticky_mid']);
 
                     return $row;

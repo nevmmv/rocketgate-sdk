@@ -97,6 +97,12 @@ class TransactionsRequest extends AbstractRequest
                 $row['expireyear'] = (int)($row['expireyear']);
                 $row['respc_id'] = (int)($row['respc_id']);
                 $row['resp_id'] = (int)($row['resp_id']);
+
+                $row['attempt_no'] = (int)($row['attempt_no']);
+                $row['payt_id'] = (int)($row['payt_id']);
+                $row['tr_amount'] = (float)($row['tr_amount']);
+                $row['tr_amount_requested'] = (float)($row['tr_amount_requested']);
+
                 $row['merchant_account'] = (int)($row['merchant_account']);
                 $row['merch_id_referrer'] = isset($row['merch_id_referrer']) ? (int)($row['merch_id_referrer']) : null;
 
@@ -128,6 +134,12 @@ class TransactionsRequest extends AbstractRequest
                     $row['respc_id'] = (int)($row['respc_id']);
                     $row['merchant_account'] = (int)($row['merchant_account']);
                     $row['resp_id'] = (int)($row['resp_id']);
+
+                    $row['attempt_no'] = (int)($row['attempt_no']);
+                    $row['payt_id'] = (int)($row['payt_id']);
+                    $row['tr_amount'] = (float)($row['tr_amount']);
+                    $row['tr_amount_requested'] = (float)($row['tr_amount_requested']);
+
                     $row['merch_id_referrer'] = isset($row['merch_id_referrer']) ? (int)($row['merch_id_referrer']) : null;
 
                     return $row;
