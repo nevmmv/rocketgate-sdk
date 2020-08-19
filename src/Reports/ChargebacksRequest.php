@@ -39,7 +39,7 @@ class ChargebacksRequest extends AbstractRequest
 
     public function handleResponse(string $data): array
     {
-        if ($this->getReturnFormat() === MembershipsRequest::RETURN_FORMAT_XML) {
+        if ($this->getReturnFormat() === ChargebacksRequest::RETURN_FORMAT_XML) {
             $data = json_decode(json_encode(simplexml_load_string($data)), true);
 
             return array_map(function ($row) {
@@ -73,7 +73,7 @@ class ChargebacksRequest extends AbstractRequest
                 return $row;
             }, $data);
         }
-        if ($this->getReturnFormat() === MembershipsRequest::RETURN_FORMAT_JSON) {
+        if ($this->getReturnFormat() === ChargebacksRequest::RETURN_FORMAT_JSON) {
             $jsonCheck = substr($data, 0, 2);
 
             if ($jsonCheck === '//') {
