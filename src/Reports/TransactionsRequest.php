@@ -34,6 +34,8 @@ class TransactionsRequest extends AbstractRequest
     const CARD_VISA = '4';
     const CARD_MASTERCARD = '5';
 
+    const TRANSACTION_ID = 'tr_id';
+    
     public function __construct()
     {
         $this->setParam(RequestParams::METHOD, 'lookupTransaction');
@@ -72,6 +74,12 @@ class TransactionsRequest extends AbstractRequest
         return $this;
     }
 
+    public function whereTransactionId(string $transactionId): TransactionsRequest
+    {
+        $this->setParam(self::TRANSACTION_ID, $transactionId);
+        return $this;
+    }
+    
     public function handleResponse(string $data): array
     {
         if ($this->getReturnFormat() === TransactionsRequest::RETURN_FORMAT_XML) {
